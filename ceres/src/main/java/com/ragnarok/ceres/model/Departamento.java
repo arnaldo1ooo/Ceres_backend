@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.ragnarok.ceres.model.vo.TipoSituacion;
@@ -25,7 +27,8 @@ public class Departamento {
 	@Column(name="dep_nombre")
 	private String nombre;
 	
-	@Column(name="dep_sucursal")
+	@ManyToOne	//Muchos Departamentos para una Sucursal
+	@JoinColumn(name="dep_sucursal")
 	private Sucursal sucursal;
 	
 	@Column(name="dep_situacion")

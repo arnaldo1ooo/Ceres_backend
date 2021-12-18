@@ -1,10 +1,14 @@
 package com.ragnarok.ceres.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.ragnarok.ceres.model.vo.TipoEntidad;
@@ -23,7 +27,8 @@ public class Entidad {
     @Column(name = "ent_id")
 	private Long id;
 
-    @Column(name = "ent_sucursal")
+	@ManyToOne	//Muchas Entidades para una Sucursal
+    @JoinColumn(name = "ent_sucursal")
 	private Sucursal sucursal;
     
     @Column(name = "ent_nombre")
@@ -32,7 +37,12 @@ public class Entidad {
     @Column(name = "ent_apellido")
 	private String apellido;
 	
-    @Column(name = "ent_localidad")
+    @ManyToOne	//Muchas Entidades para un Municipio
+    @JoinColumn(name = "ent_municipio")
+	private Municipio municipio;
+    
+    @ManyToOne	//Muchas Entidades para una Localidad
+    @JoinColumn(name = "ent_localidad")
 	private Localidad localidad;
 	
     @Column(name = "ent_direccion")
@@ -44,14 +54,15 @@ public class Entidad {
     @Column(name = "ent_tipo")
 	private TipoEntidad tipo;
 	
-    @Column(name = "ent_municipio")
-	private Municipio municipio;
-	
     @Column(name = "ent_ruc")
 	private String ruc;
-	
-    @Column(name = "ent_tipoRuc")
-	private String tipoRuc;
-	
-	
+		
+    @Column(name = "ent_email")
+	private String email;
+    
+    @Column(name = "ent_obs")
+	private String observacion;
+    
+    @Column(name = "ent_fechacreacion")
+	private Date fechacreacion;
 }

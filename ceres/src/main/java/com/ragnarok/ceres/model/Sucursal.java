@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -23,8 +25,12 @@ public class Sucursal {
     @Column(name = "suc_descripcion")
 	private String descripcion;
 	
-    @Column(name = "suc_municipio")
+    @ManyToOne //Muchas Sucursales para un Municipio
+    @JoinColumn(name = "suc_municipio")
 	private Municipio municipio;
-	
+    
+    @ManyToOne //Muchas Sucursales para una Localidad
+    @JoinColumn(name = "suc_localidad")
+	private Localidad localidad;
 	
 }

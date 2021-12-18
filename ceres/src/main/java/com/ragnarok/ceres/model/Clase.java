@@ -22,7 +22,7 @@ public class Clase {
 	@Column(name="cla_id")
 	private Long id;
 	
-	@Column(name="cla_nombre")
+	@Column(name="cla_nombre", length=45)
 	private String nombre;
 	
 }

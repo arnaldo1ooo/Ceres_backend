@@ -6,7 +6,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.ragnarok.ceres.model.vo.TipoSituacion;
@@ -41,7 +44,8 @@ public class Usuario {
     @Column(name = "usu_pass")
 	private String pass;
 	
-    @Column(name = "usu_entidad")
+    @OneToOne	//Un Usuario para una Entidad
+    @JoinColumn(name = "usu_entidad")
 	private Entidad entidad;
 	
     @Column(name = "usu_situacion")
@@ -53,10 +57,12 @@ public class Usuario {
     @Column(name = "usu_tipo")
 	private TipoUsuario tipo;
 	
-    @Column(name = "usu_sucursal")
+    @ManyToOne	//Muchos Usuarios para una Sucursal
+    @JoinColumn(name = "usu_sucursal")
 	private Sucursal sucursal;
 	
-    @Column(name = "usu_departamento")
+    @ManyToOne	//Muchos Usuarios para un Departamento
+    @JoinColumn(name = "usu_departamento")
 	private Departamento departamento;
 	
 	
