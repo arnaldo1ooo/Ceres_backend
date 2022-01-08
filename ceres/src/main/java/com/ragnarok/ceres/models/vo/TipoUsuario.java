@@ -1,4 +1,4 @@
-package com.ragnarok.ceres.model.vo;
+package com.ragnarok.ceres.models.vo;
 
 
 public enum TipoUsuario {

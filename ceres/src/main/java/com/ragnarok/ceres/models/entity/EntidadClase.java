@@ -1,4 +1,4 @@
-package com.ragnarok.ceres.model;
+package com.ragnarok.ceres.models.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,19 +10,20 @@ import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
-
-
 @Entity
-@Table(name = "clase")
+@Table(name = "entidad_clase")
 @Getter
 @Setter
-public class Clase {
+public class EntidadClase {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="cla_id")
+    @Column(name = "clen_id")
 	private Long id;
-	
-	@Column(name="cla_nombre", length=45)
-	private String nombre;
+		
+    @Column(name = "clen_entidad")
+	private Long entidad;
+    
+    @Column(name = "clen_iclase")
+	private Long clase;
 	
 }

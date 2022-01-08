@@ -1,4 +1,4 @@
-package com.ragnarok.ceres.model.vo;
+package com.ragnarok.ceres.models.vo;
 
 import java.util.HashMap;
 import java.util.Map;

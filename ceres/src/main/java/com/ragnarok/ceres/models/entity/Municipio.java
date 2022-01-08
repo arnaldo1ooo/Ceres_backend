@@ -1,4 +1,4 @@
-package com.ragnarok.ceres.model;
+package com.ragnarok.ceres.models.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

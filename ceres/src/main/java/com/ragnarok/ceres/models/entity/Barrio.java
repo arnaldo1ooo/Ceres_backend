@@ -1,7 +1,8 @@
-package com.ragnarok.ceres.model;
+package com.ragnarok.ceres.models.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,24 +14,20 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "sucursal")
+@Table(name = "barrio")
 @Getter
 @Setter
-public class Sucursal {
+public class Barrio {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "suc_id")
+	@Column(name = "bar_id")
 	private Long id;
-	
-    @Column(name = "suc_descripcion")
-	private String descripcion;
-	
-    @ManyToOne //Muchas Sucursales para un Municipio
-    @JoinColumn(name = "suc_municipio")
+
+	@Column(name = "bar_nombre")
+	private String nombre;
+
+	@ManyToOne(fetch = FetchType.LAZY) //Muchos Barrios para un Municipio
+	@JoinColumn(name = "bar_municipio")
 	private Municipio municipio;
-    
-    @ManyToOne //Muchas Sucursales para una Localidad
-    @JoinColumn(name = "suc_localidad")
-	private Localidad localidad;
-	
+
 }

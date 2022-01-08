@@ -1,4 +1,4 @@
-package com.ragnarok.ceres.model;
+package com.ragnarok.ceres.models.entity;
 
 import java.util.Date;
 
@@ -11,8 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.ragnarok.ceres.model.vo.TipoEntidad;
-import com.ragnarok.ceres.model.vo.TipoSituacion;
+import com.ragnarok.ceres.models.vo.TipoEntidad;
+import com.ragnarok.ceres.models.vo.TipoSituacion;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -42,8 +42,8 @@ public class Entidad {
 	private Municipio municipio;
     
     @ManyToOne	//Muchas Entidades para una Localidad
-    @JoinColumn(name = "ent_localidad")
-	private Localidad localidad;
+    @JoinColumn(name = "ent_barrio")
+	private Barrio barrio;
 	
     @Column(name = "ent_direccion")
 	private String direccion;

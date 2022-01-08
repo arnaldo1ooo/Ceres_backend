@@ -1,4 +1,4 @@
-package com.ragnarok.ceres.model;
+package com.ragnarok.ceres.models.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,8 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.ragnarok.ceres.model.vo.TipoSituacion;
-import com.ragnarok.ceres.model.vo.TipoUsuario;
+import com.ragnarok.ceres.models.vo.TipoSituacion;
+import com.ragnarok.ceres.models.vo.TipoUsuario;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -38,7 +38,7 @@ public class Usuario {
     @Column(name = "usu_administrador")
 	private String administrador;
 	
-    @Column(name = "usu_login")
+    @Column(name = "usu_login", unique = true)
 	private String login;
 	
     @Column(name = "usu_pass")
