@@ -32,6 +32,6 @@ public class Departamento {
 	private Sucursal sucursal;
 	
 	@Column(name="dep_situacion")
-	private TipoSituacion tipoSituacion;
+	private String situacion;
 	
 }

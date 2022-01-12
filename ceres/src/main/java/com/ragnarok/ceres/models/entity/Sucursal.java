@@ -22,15 +22,15 @@ public class Sucursal {
     @Column(name = "suc_id")
 	private Long id;
 	
-    @Column(name = "suc_descripcion")
-	private String descripcion;
+    @Column(name = "suc_nombre")
+	private String nombre;
 	
     @ManyToOne //Muchas Sucursales para un Municipio
     @JoinColumn(name = "suc_municipio")
 	private Municipio municipio;
     
     @ManyToOne //Muchas Sucursales para un Barrio
-    @JoinColumn(name = "suc_barroi")
+    @JoinColumn(name = "suc_barrio")
 	private Barrio barrio;
 	
 }
