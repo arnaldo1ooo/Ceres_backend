@@ -49,10 +49,10 @@ public class Entidad {
 	private String direccion;
 	
     @Column(name = "ent_situacion")
-	private TipoSituacion situacion;
+	private String situacion;
 	
     @Column(name = "ent_tipo")
-	private TipoEntidad tipo;
+	private String tipo;
 	
     @Column(name = "ent_ruc")
 	private String ruc;
