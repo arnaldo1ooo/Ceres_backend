@@ -1,11 +1,7 @@
 package com.ragnarok.ceres.controller;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +18,7 @@ import com.ragnarok.ceres.models.entity.Departamento;
 import com.ragnarok.ceres.service.DepartamentoService;
 
 @RestController
-@RequestMapping("/ceres/departamentos")
+@RequestMapping("/departamentos")
 public class DepartamentoController {
 	
 	@Autowired
@@ -37,8 +33,8 @@ public class DepartamentoController {
 	}
 	
 	//Leer
-	@GetMapping("/{id}")
-	public ResponseEntity<?> leer(@PathVariable(value = "id") Long departamentoId){
+	@GetMapping("/{departamentoId}")
+	public ResponseEntity<?> leer(@PathVariable() Long departamentoId){
 		Optional<Departamento> oDepartamento = departamentoService.findById(departamentoId);	//Se utiliza Optional para evitar error cuando es null
 		
 		if (!oDepartamento.isPresent()) {	//Si trae null
@@ -49,8 +45,8 @@ public class DepartamentoController {
 	}
 	
 	//Actualizar
-	@PutMapping("/{id}")
-	public ResponseEntity<?> actualizar(@RequestBody Departamento departamentoDetails, @PathVariable(value = "id") Long departamentoId){
+	@PutMapping("/{departamentoId}")
+	public ResponseEntity<?> actualizar(@RequestBody Departamento departamentoDetails, @PathVariable() Long departamentoId){
 		Optional<Departamento> oDepartamento = departamentoService.findById(departamentoId);
 		
 		if (!oDepartamento.isPresent()) {
@@ -68,8 +64,8 @@ public class DepartamentoController {
 	
 	
 	//Borrar
-	@DeleteMapping("/{id}")
-	public ResponseEntity<?> borrar(@PathVariable(value = "id") Long departamentoId){
+	@DeleteMapping("/{departamentoId}")
+	public ResponseEntity<?> borrar(@PathVariable() Long departamentoId){
 		
 		if (!departamentoService.findById(departamentoId).isPresent()) {
 			return ResponseEntity.notFound().build();
