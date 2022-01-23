@@ -18,7 +18,7 @@ import com.ragnarok.ceres.models.entity.Entidad;
 import com.ragnarok.ceres.service.EntidadService;
 
 @RestController
-@RequestMapping("/ceres/entidades")
+@RequestMapping("/entidades")
 public class EntidadController {
 	
 	@Autowired

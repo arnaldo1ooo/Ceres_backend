@@ -1,6 +1,8 @@
 package com.ragnarok.ceres.models.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -40,10 +43,6 @@ public class Entidad {
     @ManyToOne	//Muchas Entidades para un Municipio
     @JoinColumn(name = "ent_municipio")
 	private Municipio municipio;
-    
-    @ManyToOne	//Muchas Entidades para una Localidad
-    @JoinColumn(name = "ent_barrio")
-	private Barrio barrio;
 	
     @Column(name = "ent_direccion")
 	private String direccion;
@@ -65,4 +64,7 @@ public class Entidad {
     
     @Column(name = "ent_fechacreacion")
 	private Date fechacreacion;
+    
+    @ManyToMany
+    List<Clase> clases;
 }
