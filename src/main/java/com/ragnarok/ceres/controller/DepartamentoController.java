@@ -18,7 +18,7 @@ import com.ragnarok.ceres.models.entity.Departamento;
 import com.ragnarok.ceres.service.DepartamentoService;
 
 @RestController
-@RequestMapping("/departamentos")
+@RequestMapping("/ceres/departamentos")
 public class DepartamentoController {
 	
 	@Autowired
