@@ -24,14 +24,14 @@ public class Departamento {
 	@Column(name="dep_id")
 	private Long id;
 	
-	@Column(name="dep_nombre")
+	@Column(name="dep_nombre", length=45, nullable=false)
 	private String nombre;
 	
 	@ManyToOne	//Muchos Departamentos para una Sucursal
-	@JoinColumn(name="dep_sucursal")
+	@JoinColumn(name="dep_sucursal", nullable=false)
 	private Sucursal sucursal;
 	
-	@Column(name="dep_situacion")
+	@Column(name="dep_situacion", length=1, nullable=false)
 	private String situacion;
 	
 }
