@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ragnarok.ceres.models.vo.TipoSituacion;
 
 import lombok.Getter;
@@ -21,6 +22,7 @@ import lombok.Setter;
 public class Departamento {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonProperty("_id") //Cuando se convierte Objeto a Json transforma el nombre a _id
 	@Column(name="dep_id")
 	private Long id;
 	
