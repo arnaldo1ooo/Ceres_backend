@@ -22,7 +22,7 @@ import lombok.Setter;
 public class Departamento {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@JsonProperty("_id") //Cuando se convierte Objeto a Json transforma el nombre a _id
+	//@JsonProperty("_id") //Cuando se convierte Objeto a Json transforma el nombre a _id
 	@Column(name="dep_id")
 	private Long id;
 	
