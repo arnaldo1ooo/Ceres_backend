@@ -26,7 +26,7 @@ public class Departamento {
 	@Column(name="dep_id")
 	private Long id;
 	
-	@Column(name="dep_nombre", length=45, nullable=false)
+	@Column(name="dep_nombre", length=50, nullable=false)
 	private String nombre;
 	
 	@ManyToOne	//Muchos Departamentos para una Sucursal

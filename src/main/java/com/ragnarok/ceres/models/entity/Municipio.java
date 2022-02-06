@@ -20,7 +20,7 @@ public class Municipio {
     @Column(name = "mun_id")
 	private Long id;
 	
-    @Column(name = "mun_nombre")
+    @Column(name = "mun_nombre", length=45, nullable=false)
 	private String nombre;
 	
 }

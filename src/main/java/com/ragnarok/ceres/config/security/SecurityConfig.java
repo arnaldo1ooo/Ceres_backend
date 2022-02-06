@@ -31,8 +31,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-            .antMatchers(HttpMethod.GET, "/departamentos").permitAll() // Pone como publicos todas las consultas a departamentos
-            .antMatchers(HttpMethod.GET, "/departamentos/*").permitAll() // Pone como publicos todas las consultas individuales a departamentos
+            //.antMatchers(HttpMethod.GET, "/departamentos").permitAll() // Pone como publicos todas las consultas a departamentos
+            //.antMatchers(HttpMethod.GET, "/departamentos/*").permitAll() // Pone como publicos todas las consultas individuales a departamentos
             .anyRequest().authenticated()	//Todo lo demas requiere autenticacion
             .and().formLogin();
     }
