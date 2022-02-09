@@ -31,7 +31,7 @@ public class Sucursal {
 	private Municipio municipio;
     
     @ManyToOne //Muchas Sucursales para un Barrio
-    @JoinColumn(name = "suc_barrio", nullable=false)
+    @JoinColumn(name = "suc_barrio")
 	private Barrio barrio;
 	
 }
