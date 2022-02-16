@@ -63,7 +63,9 @@ public class AutenticacionPorTokenFilter extends OncePerRequestFilter {
 		String tokenHeader = request.getHeader("Authorization");
 		String comienzoToken = "Bearer "; // Tipo de Token
 		
-		tokenHeader = tokenHeader.replace("Bearer Bearer ", "Bearer "); //Reemplaza el doble Bearer
+		if (tokenHeader != null) {
+			tokenHeader = tokenHeader.replace("Bearer Bearer ", "Bearer "); //Reemplaza el doble Bearer
+		}	
 		
 		if (tokenHeader == null || tokenHeader.isEmpty() || !tokenHeader.startsWith(comienzoToken)) {
 			return null;
