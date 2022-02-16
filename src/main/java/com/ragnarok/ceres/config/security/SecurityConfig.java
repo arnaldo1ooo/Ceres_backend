@@ -12,6 +12,9 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import com.ragnarok.ceres.repository.UsuarioRepository;
 
 @Configuration
 @EnableWebSecurity
@@ -19,6 +22,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     
     @Autowired()
     private AutenticacionService autenticacionService;
+    
+	@Autowired
+	private TokenService tokenService;
+	
+	@Autowired
+	private UsuarioRepository usuarioRepository;
     
 	@Bean
 	@Override
@@ -45,11 +54,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
         http.authorizeRequests()
             //.antMatchers(HttpMethod.GET, "/departamentos").permitAll() // Pone como publicos todas las consultas a departamentos
             //.antMatchers(HttpMethod.GET, "/departamentos/*").permitAll() // Pone como publicos todas las consultas individuales a departamentos
-        
             .antMatchers(HttpMethod.POST, "/auth").permitAll()	//Permitir autenticacion
             .anyRequest().authenticated()	//Todo lo demas requiere autenticacion
             .and().csrf().disable()	//Se desactiva el csrf ya que utilizaremos jwt, al desactivar se evita ataque hackers
-            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);  //Para que no mantenga sesiones, ya que utilizamos jwt
+            .sessionManagement()
+            
+            .sessionCreationPolicy(SessionCreationPolicy.STATELESS) //Para que no mantenga sesiones, ya que utilizamos jwt
+            .and().addFilterBefore(new AutenticacionPorTokenFilter(tokenService, usuarioRepository), UsernamePasswordAuthenticationFilter.class);  //Para que ejecute mi filtro (AutenticacionPorTokenFilter) antes del filtro de Spring (UsernamePasswordAuthenticationFilter)
     }
     
     // Configuraciones de recursos estaticos (js, css, png, etc)

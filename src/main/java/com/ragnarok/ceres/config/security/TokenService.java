@@ -48,9 +48,12 @@ public class TokenService {
 				.setSigningKey(secret)
 				.parseClaimsJws(token);
 			
+			System.out.println("Token aceptado");
+			
 			return Optional.of(claims);
 		} catch (Exception e) {
 			//e.printStackTrace();
+			System.out.println("Token rechazado");
 			return Optional.empty();
 		} 
 	}
