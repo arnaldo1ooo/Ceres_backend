@@ -8,7 +8,7 @@ import com.ragnarok.ceres.models.entity.Usuario;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
-	Optional<Usuario> findByLogin(String username);
+	Optional<Usuario> findByNombreUsuario(String username);
 	
 	
 }

@@ -46,10 +46,10 @@ public class Usuario implements UserDetails {
 	private String administrador;
 	
     @Column(name = "usu_login", unique = true)
-	private String login;
+	private String nombreUsuario;
 	
     @Column(name = "usu_pass")
-	private String pass;
+	private String contrasena;
 	
     @OneToOne	//Un Usuario para una Entidad
     @JoinColumn(name = "usu_entidad")
@@ -110,14 +110,14 @@ public class Usuario implements UserDetails {
 	@Override
 	public String getPassword() {
 		// TODO Auto-generated method stub
-		return this.pass;
+		return this.contrasena;
 	}
 
 
 	@Override
 	public String getUsername() {
 		// TODO Auto-generated method stub
-		return this.login;
+		return this.nombreUsuario;
 	}
 
 

@@ -13,14 +13,14 @@ import lombok.Setter;
 public class LoginForm {
 
 	@NotEmpty
-	private String login;
+	private String nombreUsuario;
 	
 	@NotEmpty
-	private String pass;
+	private String contrasena;
 	
 	
-	public Authentication convertir() {	//Convierte el (user recibido + pass recibido) en objeto Authentication
-		return new UsernamePasswordAuthenticationToken(login, pass);
+	public Authentication convertir() {	//Convierte el (nombreUsuario recibido + contrasena recibido) en objeto Authentication
+		return new UsernamePasswordAuthenticationToken(nombreUsuario, contrasena);
 	}
 
 }
