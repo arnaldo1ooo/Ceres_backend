@@ -1,6 +1,5 @@
 package com.ragnarok.ceres.models.entity;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -13,9 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import com.ragnarok.ceres.models.vo.TipoEntidad;
-import com.ragnarok.ceres.models.vo.TipoSituacion;
 
 import lombok.Getter;
 import lombok.Setter;
