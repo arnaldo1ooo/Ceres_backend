@@ -20,66 +20,60 @@ import com.ragnarok.ceres.service.EntidadService;
 @RestController
 @RequestMapping("/ceres/entidades")
 public class EntidadController {
-	
+
 	@Autowired
 	private EntidadService entidadService;
-	
-	
-	//Crear nuevo
-	@PostMapping //Tambien se puede usar @RequestMapping(POST)
-	public ResponseEntity<?> crear(@RequestBody Entidad entidad){
-		
-		return ResponseEntity.status(HttpStatus.CREATED).body(entidadService.save(entidad));
+
+	// Crear nuevo registro
+	@PostMapping // Tambien se puede usar @RequestMapping(POST)
+	public ResponseEntity<?> salvar(@RequestBody Entidad entidad) {
+		return ResponseEntity.status(HttpStatus.CREATED).body(entidadService.salvar(entidad));
 	}
-	
-	//Leer
+
+	// Leer registro
 	@GetMapping("/{entidadId}")
-	public ResponseEntity<?> leer(@PathVariable() Long entidadId){
-		Optional<Entidad> oEntidad = entidadService.findById(entidadId);	//Se utiliza Optional para evitar error cuando es null
-		
-		if (!oEntidad.isPresent()) {	//Si trae null
-			return ResponseEntity.notFound().build();	//Retorna el codigo 404
-		} 
-		
-		return ResponseEntity.ok(oEntidad);
+	public ResponseEntity<?> leer(@PathVariable() Long entidadId) {
+		Optional<Entidad> oEntidad = entidadService.buscarPorId(entidadId); // Se utiliza Optional para evitar error
+
+		if (oEntidad.isPresent()) { // Si no trae null
+			return ResponseEntity.ok(oEntidad);
+		} else {
+			return ResponseEntity.notFound().build(); // Retorna el codigo 404
+		}
 	}
-	
-	//Actualizar
+
+	// Actualizar
 	@PutMapping("/{entidadId}")
-	public ResponseEntity<?> actualizar(@RequestBody Entidad entidadDetails, @PathVariable() Long entidadId){
-		Optional<Entidad> oEntidad = entidadService.findById(entidadId);
-		
-		if (!oEntidad.isPresent()) {
+	public ResponseEntity<?> actualizar(@RequestBody Entidad entidadActualizada, @PathVariable() Long entidadId) {
+		Optional<Entidad> oEntidad = entidadService.buscarPorId(entidadId);
+
+		if (oEntidad.isPresent()) {
+			oEntidad = Optional.ofNullable(entidadActualizada);
+
+			return ResponseEntity.status(HttpStatus.CREATED).body(entidadService.salvar(oEntidad.get()));
+		} else {
 			return ResponseEntity.notFound().build();
 		}
-		
-		oEntidad.get().setNombre(entidadDetails.getNombre());
-		oEntidad.get().setSituacion(entidadDetails.getSituacion());
-		oEntidad.get().setSucursal(entidadDetails.getSucursal());
-		
-		return ResponseEntity.status(HttpStatus.CREATED).body(entidadService.save(oEntidad.get()));
+
 	}
-	
-	
-	//Borrar
+
+	// Borrar
 	@DeleteMapping("/{entidadId}")
-	public ResponseEntity<?> borrar(@PathVariable() Long entidadId){
-		
-		if (!entidadService.findById(entidadId).isPresent()) {
+	public ResponseEntity<?> borrar(@PathVariable() Long entidadId) {
+		Optional<Entidad> oEntidad = entidadService.buscarPorId(entidadId);
+
+		if (oEntidad.isPresent()) {
+			entidadService.eliminarPorId(entidadId);
+			return ResponseEntity.ok().build();
+		} else {
 			return ResponseEntity.notFound().build();
 		}
-		
-		entidadService.deleteById(entidadId);
-		
-		return ResponseEntity.ok().build();
 	}
-	
-	
-	//Leer todo
+
+	// Leer todo
 	@GetMapping
-	public Iterable<Entidad> leerTodo(){
-		
-		return entidadService.findAll();
+	public Iterable<Entidad> leerTodo() {
+		return entidadService.buscarTodos();
 	}
-	
+
 }
