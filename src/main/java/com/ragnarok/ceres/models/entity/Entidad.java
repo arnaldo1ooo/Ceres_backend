@@ -1,6 +1,6 @@
 package com.ragnarok.ceres.models.entity;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -59,7 +59,7 @@ public class Entidad {
 	private String observacion;
     
     @Column(name = "ent_fechacreacion")
-	private Date fechacreacion;
+	private LocalDateTime fechaCreacion;
     
     @ManyToMany
     List<Clase> clases;
