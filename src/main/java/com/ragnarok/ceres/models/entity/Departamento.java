@@ -22,17 +22,20 @@ import lombok.Setter;
 public class Departamento {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@JsonProperty("_id") //Cuando se convierte Objeto a Json transforma el nombre a _id
+	@JsonProperty("_id") //Debe ser el mismo nombre que el del modelo del front
 	@Column(name="dep_id")
 	private Long id;
-	
+
+	@JsonProperty("nombre")
 	@Column(name="dep_nombre", length=50, nullable=false)
 	private String nombre;
-	
+
+	@JsonProperty("sucursal")
 	@ManyToOne	//Muchos Departamentos para una Sucursal
 	@JoinColumn(name="dep_sucursal", nullable=false)
 	private Sucursal sucursal;
-	
+
+	@JsonProperty("situacion")
 	@Column(name="dep_situacion", length=1, nullable=false)
 	private String situacion;
 	
